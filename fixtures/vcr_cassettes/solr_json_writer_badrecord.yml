@@ -1,0 +1,93 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:8983/solr/core1/update/json
+    body:
+      encoding: UTF-8
+      string: '[{"id":[1],"name_t":["Bill"]},{"id":[1,2],"name_t":["Bill"]}]'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.5.3.3, ruby 2.1.2 (2014-05-08))
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 05 Dec 2014 21:30:54 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {"responseHeader":{"status":400,"QTime":1},"error":{"msg":"Document contains multiple values for uniqueKey field: id=[1, 2]","code":400}}
+    http_version: 
+  recorded_at: Fri, 05 Dec 2014 21:30:54 GMT
+- request:
+    method: post
+    uri: http://localhost:8983/solr/core1/update/json
+    body:
+      encoding: UTF-8
+      string: '[{"id":[1],"name_t":["Bill"]}]'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.5.3.3, ruby 2.1.2 (2014-05-08))
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 05 Dec 2014 21:30:54 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {"responseHeader":{"status":0,"QTime":0}}
+    http_version: 
+  recorded_at: Fri, 05 Dec 2014 21:30:54 GMT
+- request:
+    method: post
+    uri: http://localhost:8983/solr/core1/update/json
+    body:
+      encoding: UTF-8
+      string: '[{"id":[1,2],"name_t":["Bill"]}]'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.5.3.3, ruby 2.1.2 (2014-05-08))
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 05 Dec 2014 21:30:54 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {"responseHeader":{"status":400,"QTime":0},"error":{"msg":"Document contains multiple values for uniqueKey field: id=[1, 2]","code":400}}
+    http_version: 
+  recorded_at: Fri, 05 Dec 2014 21:30:54 GMT
+recorded_with: VCR 2.9.3
